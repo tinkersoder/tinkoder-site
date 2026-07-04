@@ -1,0 +1,50 @@
+/* ============================================================
+   TINKODER — animations.css
+   One orchestrated hero reveal + quiet scroll reveals.
+   All motion respects prefers-reduced-motion.
+   ============================================================ */
+
+/* Scroll-triggered reveal (added by script.js IntersectionObserver) */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+.reveal:nth-child(2) { transition-delay: .08s; }
+.reveal:nth-child(3) { transition-delay: .16s; }
+.reveal:nth-child(4) { transition-delay: .24s; }
+
+/* Hero entrance — a single deliberate moment on page load */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: none; }
+}
+.hero__copy > * { animation: rise .7s ease both; }
+.hero__copy > *:nth-child(2) { animation-delay: .1s; }
+.hero__copy > *:nth-child(3) { animation-delay: .2s; }
+.hero__copy > *:nth-child(4) { animation-delay: .3s; }
+.hero__copy > *:nth-child(5) { animation-delay: .4s; }
+
+/* Hero technical drawing: dimension lines draw themselves in */
+.hero__art .draw {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: draw 1.6s ease .4s forwards;
+}
+@keyframes draw { to { stroke-dashoffset: 0; } }
+.hero__art .fade-in {
+  opacity: 0;
+  animation: fadein .8s ease .9s forwards;
+}
+@keyframes fadein { to { opacity: 1; } }
+
+/* Respect reduced motion — show everything immediately, no movement */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .hero__copy > * { animation: none; }
+  .hero__art .draw { stroke-dashoffset: 0; animation: none; }
+  .hero__art .fade-in { opacity: 1; animation: none; }
+  .card, .btn { transition: none; }
+}

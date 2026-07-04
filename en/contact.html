@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Request a Free Quote | Tinkoder</title>
+  <meta name="description" content="Contact Tinkoder: a photo, a sketch or a couple of sentences is enough. We usually reply the same day. The quote is always free.">
+  <link rel="canonical" href="https://tinkoder.fi/en/contact.html">
+  <link rel="alternate" hreflang="fi" href="https://tinkoder.fi/yhteys.html">
+  <link rel="alternate" hreflang="en" href="https://tinkoder.fi/en/contact.html">
+  <link rel="alternate" hreflang="x-default" href="https://tinkoder.fi/yhteys.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Tinkoder">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:title" content="Contact — Request a Free Quote | Tinkoder">
+  <meta property="og:description" content="Contact Tinkoder: a photo, a sketch or a couple of sentences is enough. We usually reply the same day. The quote is always free.">
+  <meta property="og:url" content="https://tinkoder.fi/en/contact.html">
+  <meta property="og:image" content="https://tinkoder.fi/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Instrument+Sans:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <script>
+    (function(){try{var t=localStorage.getItem("tinkoder-theme");
+    if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))
+    document.documentElement.setAttribute("data-theme","dark");}catch(e){}})();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="nav__logo" href="../en/index.html" aria-label="Tinkoder — home">
+        <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M32 4 L54 16 V48 L32 60 L10 48 V16 Z" stroke="var(--primary)" stroke-width="4" stroke-linejoin="round"/><path d="M20 22 H44 M32 22 V42" stroke="var(--primary)" stroke-width="4" stroke-linecap="round"/><circle cx="32" cy="46" r="4" fill="var(--accent)"/></svg>
+        Tinkoder
+      </a>
+      <button class="nav__burger" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M2 5h16M2 10h16M2 15h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="../en/index.html">Home</a></li>
+        <li><a href="../en/services.html">Services</a></li>
+        <li><a href="../en/portfolio.html">Portfolio</a></li>
+        <li><a href="../en/about.html">About</a></li>
+        <li><a href="../en/contact.html" aria-current="page">Contact</a></li>
+      </ul>
+      <div class="nav__actions">
+        <div class="lang-switch" aria-label="Language selection">
+          <a href="../yhteys.html" data-lang-link="fi" lang="fi" hreflang="fi">FI</a>
+          <span aria-current="true" lang="en">EN</span>
+        </div>
+        <button class="theme-toggle" aria-label="Toggle between dark and light mode">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+  <main id="main">
+
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">Contact</p>
+        <h1>Tell us what you need</h1>
+        <p class="lead">A photo, a sketch or a couple of sentences is enough. We usually reply the same working day — and the quote is always free.</p>
+      </div>
+    </section>
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="grid grid--2">
+          <div class="card">
+            <form class="form" id="contact-form" novalidate>
+              <div>
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" autocomplete="name" required>
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" autocomplete="email" required>
+              </div>
+              <div>
+                <label for="topic">Topic</label>
+                <select id="topic" name="topic">
+                  <option>3D printing or a replacement part</option>
+                  <option>Electronics or a prototype</option>
+                  <option>Smart home or Home Assistant</option>
+                  <option>Product development or a small run</option>
+                  <option>Repair</option>
+                  <option>Consulting</option>
+                  <option>Something else</option>
+                </select>
+              </div>
+              <div>
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="6" required placeholder="Describe the problem or idea in your own words. Dimensions and photos can also be sent by email."></textarea>
+                <p class="hint">We never share your details. Read the <a href="../en/privacy.html">privacy policy</a>.</p>
+              </div>
+              <button class="btn btn--primary" type="submit">Send message</button>
+              <p class="form__status" role="status" aria-live="polite" data-success="Thanks for your message! We'll get back to you as soon as possible."></p>
+            </form>
+          </div>
+          <div>
+            <div class="card" style="margin-bottom:1.4rem">
+              <h3>Straight to email</h3>
+              <p><a href="mailto:info@tinkoder.fi">info@tinkoder.fi</a></p>
+              <p style="color:var(--muted)">Attach photos and measurements if you have them — it speeds up the quote considerably.</p>
+            </div>
+            <div class="card" style="margin-bottom:1.4rem">
+              <h3>Location &amp; hours</h3>
+              <p style="color:var(--muted)">Tampere, Finland<br>Mon–Fri 9–17 (placeholder)<br>Remote work across Finland</p>
+            </div>
+            <div class="card">
+              <h3>Social media</h3>
+              <p style="color:var(--muted)"><a href="#">Instagram</a> · <a href="#">YouTube</a> · <a href="#">LinkedIn</a> <span class="spec">placeholders</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a class="nav__logo" href="../en/index.html">Tinkoder</a>
+          <p style="color:var(--muted); max-width:26em; margin-top:.8rem">Custom technical solutions from Tampere, serving all of Finland. We design and build what you can't buy off the shelf.</p>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="../en/services.html#3d-printing">3D printing</a></li>
+            <li><a href="../en/services.html#electronics">Electronics</a></li>
+            <li><a href="../en/services.html#smart-home">Smart home</a></li>
+            <li><a href="../en/services.html#product-development">Product development</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="../en/about.html">About us</a></li>
+            <li><a href="../en/portfolio.html">Portfolio</a></li>
+            <li><a href="../en/contact.html">Contact</a></li>
+            <li><a href="../en/privacy.html">Privacy policy</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:info@tinkoder.fi">info@tinkoder.fi</a></li>
+            <li>Tampere, Finland</li>
+            <li><a href="#" aria-label="Instagram (placeholder)">Instagram</a></li>
+            <li><a href="#" aria-label="YouTube (placeholder)">YouTube</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__meta">
+        <span>© 2026 Tinkoder · Business ID 0000000-0</span>
+        <span><a href="../yhteys.html" data-lang-link="fi" hreflang="fi">Tämä sivu suomeksi</a></span>
+      </div>
+    </div>
+  </footer>
+  <script src="../js/script.js" defer></script>
+</body>
+</html>

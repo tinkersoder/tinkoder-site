@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio — Completed Projects | Tinkoder</title>
+  <meta name="description" content="See Tinkoder's completed projects: smart blinds, a live bus departure display, WLED lighting, robotics and reverse-engineered replacement parts.">
+  <link rel="canonical" href="https://tinkoder.fi/en/portfolio.html">
+  <link rel="alternate" hreflang="fi" href="https://tinkoder.fi/portfolio.html">
+  <link rel="alternate" hreflang="en" href="https://tinkoder.fi/en/portfolio.html">
+  <link rel="alternate" hreflang="x-default" href="https://tinkoder.fi/portfolio.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Tinkoder">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:title" content="Portfolio — Completed Projects | Tinkoder">
+  <meta property="og:description" content="See Tinkoder's completed projects: smart blinds, a live bus departure display, WLED lighting, robotics and reverse-engineered replacement parts.">
+  <meta property="og:url" content="https://tinkoder.fi/en/portfolio.html">
+  <meta property="og:image" content="https://tinkoder.fi/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Instrument+Sans:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <script>
+    (function(){try{var t=localStorage.getItem("tinkoder-theme");
+    if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))
+    document.documentElement.setAttribute("data-theme","dark");}catch(e){}})();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="nav__logo" href="../en/index.html" aria-label="Tinkoder — home">
+        <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M32 4 L54 16 V48 L32 60 L10 48 V16 Z" stroke="var(--primary)" stroke-width="4" stroke-linejoin="round"/><path d="M20 22 H44 M32 22 V42" stroke="var(--primary)" stroke-width="4" stroke-linecap="round"/><circle cx="32" cy="46" r="4" fill="var(--accent)"/></svg>
+        Tinkoder
+      </a>
+      <button class="nav__burger" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M2 5h16M2 10h16M2 15h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="../en/index.html">Home</a></li>
+        <li><a href="../en/services.html">Services</a></li>
+        <li><a href="../en/portfolio.html" aria-current="page">Portfolio</a></li>
+        <li><a href="../en/about.html">About</a></li>
+        <li><a href="../en/contact.html">Contact</a></li>
+      </ul>
+      <div class="nav__actions">
+        <div class="lang-switch" aria-label="Language selection">
+          <a href="../portfolio.html" data-lang-link="fi" lang="fi" hreflang="fi">FI</a>
+          <span aria-current="true" lang="en">EN</span>
+        </div>
+        <button class="theme-toggle" aria-label="Toggle between dark and light mode">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+  <main id="main">
+
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">Portfolio</p>
+        <h1>Our work</h1>
+        <p class="lead">Every project started as someone's problem. The images are technical drawings for now — photos of real builds will be added as clients give permission.</p>
+      </div>
+    </section>
+    <section class="section" style="padding-top:1rem">
+      <div class="container">
+        <div class="grid">
+
+          <article class="card project reveal">
+            <div class="project__media"><svg viewBox="0 0 300 180" fill="none" aria-hidden="true"><rect x="30" y="30" width="240" height="20" rx="10" stroke="var(--primary)" stroke-width="2.5"/><rect x="40" y="60" width="220" height="80" rx="6" stroke="var(--primary)" stroke-width="2" stroke-dasharray="6 5"/><circle cx="270" cy="40" r="14" stroke="var(--accent)" stroke-width="2.5"/><path d="M270 40 v100" stroke="var(--muted)" stroke-width="1.5"/></svg></div>
+            <div class="project__body">
+              <h3>Smart blinds for Home Assistant</h3>
+              <dl class="project__facts">
+                <dt>Problem</dt><dd>Commercial motorised blinds cost hundreds of euros per window and required the manufacturer's app.</dd>
+                <dt>Solution</dt><dd>A stepper motor unit in a 3D-printed housing, ESPHome control and a position slider in the Home Assistant UI. The same controller scales to multiple windows.</dd>
+                <dt>Technologies</dt><dd>ESP8266, NEMA 17, A4988, ESPHome, 3D-printed mechanics</dd>
+                <dt>Result</dt><dd>The blinds follow the sun. Cost roughly a third of the commercial option.</dd>
+              </dl>
+            </div>
+          </article>
+
+          <article class="card project reveal">
+            <div class="project__media"><svg viewBox="0 0 300 180" fill="none" aria-hidden="true"><rect x="60" y="40" width="180" height="90" rx="10" stroke="var(--primary)" stroke-width="2.5"/><text x="82" y="80" fill="var(--primary)" font-family="Spline Sans Mono, monospace" font-size="16">71 → 3 min</text><text x="82" y="106" fill="var(--muted)" font-family="Spline Sans Mono, monospace" font-size="14">8 · 12 · 27 min</text></svg></div>
+            <div class="project__body">
+              <h3>Hallway bus departure display</h3>
+              <dl class="project__facts">
+                <dt>Problem</dt><dd>Checking the bus schedule on a phone every morning — shoes on, hands full.</dd>
+                <dt>Solution</dt><dd>An OLED display that fetches the next four departures from your own stop via the Tampere transit API through Home Assistant.</dd>
+                <dt>Technologies</dt><dd>WeMos D1 Mini, SSD1306, Home Assistant, Nysse API</dd>
+                <dt>Result</dt><dd>Departure times at a glance by the door. No more sprinting to the stop for nothing.</dd>
+              </dl>
+            </div>
+          </article>
+
+          <article class="card project reveal">
+            <div class="project__media"><svg viewBox="0 0 300 180" fill="none" aria-hidden="true"><path d="M60 140 h180 v-60 a20 20 0 0 0 -20 -20 h-140 a20 20 0 0 0 -20 20 Z" stroke="var(--primary)" stroke-width="2.5" stroke-linejoin="round"/><circle cx="150" cy="100" r="22" stroke="var(--primary)" stroke-width="2.5"/><path d="M150 78 v-8 M150 130 v-8 M128 100 h-8 M180 100 h-8" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+            <div class="project__body">
+              <h3>Smart litter box air filter</h3>
+              <dl class="project__facts">
+                <dt>Problem</dt><dd>Odours spread through the flat before the box gets cleaned.</dd>
+                <dt>Solution</dt><dd>A wall-mounted filter unit whose PIR sensor starts the fan right after the cat's visit. The activated-carbon cartridge swaps with a snap.</dd>
+                <dt>Technologies</dt><dd>PIR sensor, 40 mm fan, USB-C, parametric OpenSCAD design</dd>
+                <dt>Result</dt><dd>An odour-free hallway and a ten-second cartridge change. In development as a small-batch product.</dd>
+              </dl>
+            </div>
+          </article>
+
+          <article class="card project reveal">
+            <div class="project__media"><svg viewBox="0 0 300 180" fill="none" aria-hidden="true"><path d="M40 130 h220" stroke="var(--primary)" stroke-width="2.5"/><circle cx="70" cy="130" r="7" fill="var(--accent)"/><circle cx="120" cy="130" r="7" stroke="var(--primary)" stroke-width="2"/><circle cx="170" cy="130" r="7" fill="var(--accent)"/><circle cx="220" cy="130" r="7" stroke="var(--primary)" stroke-width="2"/><path d="M70 122 q0 -40 40 -50 M170 122 q0 -55 55 -60" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="4 4"/></svg></div>
+            <div class="project__body">
+              <h3>WLED ambient lighting</h3>
+              <dl class="project__facts">
+                <dt>Problem</dt><dd>The living room lighting was either full-on or off — no atmosphere in between.</dd>
+                <dt>Solution</dt><dd>Indirect LED strip lighting with a WLED controller, preset scenes on Home Assistant buttons and a movie mode that reacts to the TV.</dd>
+                <dt>Technologies</dt><dd>WLED, WS2812B, ESP32, Home Assistant automations</dd>
+                <dt>Result</dt><dd>The lighting adapts to the situation automatically. Even the neighbours asked who built it.</dd>
+              </dl>
+            </div>
+          </article>
+
+          <article class="card project reveal">
+            <div class="project__media"><svg viewBox="0 0 300 180" fill="none" aria-hidden="true"><rect x="120" y="140" width="60" height="14" rx="7" stroke="var(--primary)" stroke-width="2.5"/><path d="M150 140 L130 90 L170 55" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="130" cy="90" r="6" fill="var(--accent)"/><circle cx="170" cy="55" r="6" fill="var(--accent)"/><path d="M170 55 q30 -10 40 10" stroke="var(--muted)" stroke-width="2" stroke-dasharray="4 4"/></svg></div>
+            <div class="project__body">
+              <h3>Robotic cat teaser arm</h3>
+              <dl class="project__facts">
+                <dt>Problem</dt><dd>The cat needed stimulation even when no one is home.</dd>
+                <dt>Solution</dt><dd>A compact servo-driven arm that waves a toy in randomised patterns. Started remotely or on a schedule from Home Assistant.</dd>
+                <dt>Technologies</dt><dd>ESP32, MG90 servos, 3D-printed frame</dd>
+                <dt>Result</dt><dd>A happy cat — and movement patterns unpredictable enough to stay interesting.</dd>
+              </dl>
+            </div>
+          </article>
+
+          <article class="card project reveal">
+            <div class="project__media"><svg viewBox="0 0 300 180" fill="none" aria-hidden="true"><path d="M80 60 h100 a16 16 0 0 1 16 16 v20 h40 v50 H80 Z" stroke="var(--primary)" stroke-width="2.5" stroke-linejoin="round"/><circle cx="110" cy="90" r="10" stroke="var(--primary)" stroke-width="2"/><circle cx="110" cy="122" r="10" stroke="var(--primary)" stroke-width="2"/><path d="M80 40 h100 M80 34 v12 M180 34 v12" stroke="var(--muted)" stroke-width="1"/><text x="112" y="36" fill="var(--muted)" font-family="Spline Sans Mono, monospace" font-size="11">58 mm</text></svg></div>
+            <div class="project__body">
+              <h3>Reverse-engineered discontinued spare part</h3>
+              <dl class="project__facts">
+                <dt>Problem</dt><dd>A hinge broke on a quality appliance and the manufacturer no longer supplies the part.</dd>
+                <dt>Solution</dt><dd>The original part was measured, remodelled and reinforced at the fracture point. Impact-resistant PETG was chosen as the material.</dd>
+                <dt>Technologies</dt><dd>Calliper measurement, Fusion 360, PETG printing</dd>
+                <dt>Result</dt><dd>The appliance was back in use within a week. The new part has outlasted the original.</dd>
+              </dl>
+            </div>
+          </article>
+        </div>
+        <div class="cta-band mt-2">
+          <h2>Your project here?</h2>
+          <p>Tell us your idea — the projects we most like to add to this page are the ones nobody else will take on.</p>
+          <p style="margin-top:1.6rem"><a class="btn btn--light" href="../en/contact.html">Request a quote</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a class="nav__logo" href="../en/index.html">Tinkoder</a>
+          <p style="color:var(--muted); max-width:26em; margin-top:.8rem">Custom technical solutions from Tampere, serving all of Finland. We design and build what you can't buy off the shelf.</p>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="../en/services.html#3d-printing">3D printing</a></li>
+            <li><a href="../en/services.html#electronics">Electronics</a></li>
+            <li><a href="../en/services.html#smart-home">Smart home</a></li>
+            <li><a href="../en/services.html#product-development">Product development</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="../en/about.html">About us</a></li>
+            <li><a href="../en/portfolio.html">Portfolio</a></li>
+            <li><a href="../en/contact.html">Contact</a></li>
+            <li><a href="../en/privacy.html">Privacy policy</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:info@tinkoder.fi">info@tinkoder.fi</a></li>
+            <li>Tampere, Finland</li>
+            <li><a href="#" aria-label="Instagram (placeholder)">Instagram</a></li>
+            <li><a href="#" aria-label="YouTube (placeholder)">YouTube</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__meta">
+        <span>© 2026 Tinkoder · Business ID 0000000-0</span>
+        <span><a href="../portfolio.html" data-lang-link="fi" hreflang="fi">Tämä sivu suomeksi</a></span>
+      </div>
+    </div>
+  </footer>
+  <script src="../js/script.js" defer></script>
+</body>
+</html>

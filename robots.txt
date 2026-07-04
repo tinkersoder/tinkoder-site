@@ -1,0 +1,5 @@
+# Tinkoder — robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://tinkoder.fi/sitemap.xml
