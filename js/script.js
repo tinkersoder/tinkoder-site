@@ -136,9 +136,11 @@
 
   /* ----------------------------------------------------------
      5. CONTACT FORM
-     Front-end demo handler: validates, then shows a success
-     message. Wire the fetch() call to your form backend
-     (e.g. Formspree, Web3Forms, or your own endpoint) later.
+     Submits via Web3Forms (https://web3forms.com) — a free
+     form backend, no server of our own needed. The form's
+     hidden "access_key" field needs a real key from
+     web3forms.com (sign up with info@tinkoder.fi); the hidden
+     "cc" field sends a copy to tinkoder@purelymail.com.
   ---------------------------------------------------------- */
   var form = document.querySelector("#contact-form");
   if (form) {
@@ -149,18 +151,29 @@
       var status = form.querySelector(".form__status");
       var btn = form.querySelector("button[type=submit]");
       btn.disabled = true;
+      status.textContent = "";
 
-      /* TODO: replace this timeout with a real request, e.g.
-         fetch("https://example.com/api/contact", {
-           method: "POST",
-           body: new FormData(form)
-         }) */
-      setTimeout(function () {
-        form.reset();
-        btn.disabled = false;
-        status.textContent = status.getAttribute("data-success");
-        status.focus && status.focus();
-      }, 600);
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(form)
+      })
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          btn.disabled = false;
+          if (data.success) {
+            form.reset();
+            status.textContent = status.getAttribute("data-success");
+          } else {
+            status.textContent = status.getAttribute("data-error");
+          }
+          status.focus && status.focus();
+        })
+        .catch(function () {
+          btn.disabled = false;
+          status.textContent = status.getAttribute("data-error");
+          status.focus && status.focus();
+        });
     });
   }
 })();

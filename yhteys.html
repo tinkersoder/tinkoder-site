@@ -73,6 +73,10 @@
         <div class="grid grid--2">
           <div class="card">
             <form class="form" id="contact-form" novalidate>
+              <input type="hidden" name="access_key" value="d2a2eac4-5dc7-47a3-9f8a-965b6ab3e439">
+              <input type="hidden" name="subject" value="Uusi yhteydenotto — tinkoder.fi">
+              <input type="hidden" name="cc" value="tinkoder@purelymail.com">
+              <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off">
               <div>
                 <label for="name">Nimi</label>
                 <input type="text" id="name" name="name" autocomplete="name" required>
@@ -99,7 +103,7 @@
                 <p class="hint">Emme jaa tietojasi kenellekään. Lue <a href="tietosuoja.html">tietosuojaseloste</a>.</p>
               </div>
               <button class="btn btn--primary" type="submit">Lähetä viesti</button>
-              <p class="form__status" role="status" aria-live="polite" data-success="Kiitos viestistäsi! Palaamme asiaan mahdollisimman pian."></p>
+              <p class="form__status" role="status" aria-live="polite" data-success="Kiitos viestistäsi! Palaamme asiaan mahdollisimman pian." data-error="Lähetys epäonnistui. Kokeile hetken kuluttua uudelleen tai lähetä viesti suoraan osoitteeseen info@tinkoder.fi."></p>
             </form>
           </div>
           <div>

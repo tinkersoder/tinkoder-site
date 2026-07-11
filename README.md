@@ -64,8 +64,9 @@ theme before first paint to prevent flashing.
 1. Replace `info@tinkoder.fi` placeholder details, business ID, opening
    hours and social links.
 2. Add `assets/og-image.png` (1200×630) for link previews.
-3. Wire the contact form: in `js/script.js`, replace the demo `setTimeout`
-   with a `fetch()` to Formspree/Web3Forms or your own endpoint.
+3. Contact form is wired to Web3Forms (`js/script.js`), sending to the
+   account tied to the `access_key` in `yhteys.html`/`en/contact.html`
+   and CC'ing tinkoder@purelymail.com.
 4. Replace placeholder testimonials with real ones.
 5. Configure the server to serve `404.html` for missing paths, and
    `/en/` → `/en/index.html`.

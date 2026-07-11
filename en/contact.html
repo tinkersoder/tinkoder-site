@@ -73,6 +73,10 @@
         <div class="grid grid--2">
           <div class="card">
             <form class="form" id="contact-form" novalidate>
+              <input type="hidden" name="access_key" value="d2a2eac4-5dc7-47a3-9f8a-965b6ab3e439">
+              <input type="hidden" name="subject" value="New contact form submission — tinkoder.fi">
+              <input type="hidden" name="cc" value="tinkoder@purelymail.com">
+              <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off">
               <div>
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" autocomplete="name" required>
@@ -99,7 +103,7 @@
                 <p class="hint">We never share your details. Read the <a href="../en/privacy.html">privacy policy</a>.</p>
               </div>
               <button class="btn btn--primary" type="submit">Send message</button>
-              <p class="form__status" role="status" aria-live="polite" data-success="Thanks for your message! We'll get back to you as soon as possible."></p>
+              <p class="form__status" role="status" aria-live="polite" data-success="Thanks for your message! We'll get back to you as soon as possible." data-error="Sending failed. Please try again shortly or email us directly at info@tinkoder.fi."></p>
             </form>
           </div>
           <div>
