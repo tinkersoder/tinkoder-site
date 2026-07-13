@@ -1,0 +1,11 @@
+# Dev tooling artefacts — not part of the deployed site
+graphify-out/
+logos.zip
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# OS
+.DS_Store

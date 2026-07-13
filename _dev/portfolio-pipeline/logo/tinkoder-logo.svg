@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Tinkoder mark: hex nut holding a "T" whose stem ends in a circuit node -->
+  <path d="M32 4 L54 16 V48 L32 60 L10 48 V16 Z" stroke="#1B5E4A" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M20 22 H44 M32 22 V42" stroke="#1B5E4A" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="32" cy="46" r="4" fill="#E9A13B"/>
+</svg>
