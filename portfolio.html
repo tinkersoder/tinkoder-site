@@ -105,7 +105,7 @@
               <dl class="project__facts">
                 <dt>Ongelma</dt><dd>Hajut ehtivät levitä asuntoon ennen laatikon siivousta.</dd>
                 <dt>Ratkaisu</dt><dd>Seinään kiinnitettävä suodatinyksikkö, jonka PIR-tunnistin käynnistää puhaltimen kissan käynnin jälkeen. Aktiivihiilipatruuna vaihtuu napsauttamalla.</dd>
-                <dt>Teknologiat</dt><dd>PIR-anturi, 40 mm puhallin, USB-C, parametrinen OpenSCAD-suunnittelu</dd>
+                <dt>Teknologiat</dt><dd>PIR-anturi, 40 mm puhallin, USB-C, parametrinen FreeCAD-suunnittelu</dd>
                 <dt>Tulos</dt><dd>Hajuton eteinen ja patruunanvaihto kymmenessä sekunnissa. Kehitteillä piensarjatuotteeksi.</dd>
               </dl>
             </div>
@@ -116,10 +116,10 @@
             <div class="project__body">
               <h3>WLED-tunnelmavalaistus</h3>
               <dl class="project__facts">
-                <dt>Ongelma</dt><dd>Olohuoneen valaistus oli joko täysillä tai pimeänä — tunnelmaa ei syntynyt.</dd>
-                <dt>Ratkaisu</dt><dd>Epäsuora LED-nauhavalaistus WLED-ohjaimella, valmiit tunnelmat Home Assistantin painikkeisiin ja elokuvatila, joka reagoi televisioon.</dd>
-                <dt>Teknologiat</dt><dd>WLED, WS2812B, ESP32, Home Assistant -automaatiot</dd>
-                <dt>Tulos</dt><dd>Valaistus vaihtuu tilanteen mukaan automaattisesti. Naapuritkin kysyivät toteuttajaa.</dd>
+                <dt>Ongelma</dt><dd>Olohuoneen valaistus oli joko täysillä tai pimeänä. Silmät väsyivät elokuvaa katsellessa.</dd>
+                <dt>Ratkaisu</dt><dd>Epäsuora LED-nauhavalaistus WLED-ohjaimella joka on yhdistetty Raspberry Pi Zeroon. HDMI-signaali kiertää laitteen kautta ja näin valot vastaavat juuri sitä, mitä ruudulla näkyy. Lisänä valmiiksi määritellyt tunnelmat Home Assistantin painikkeisiin ja digitaalinen mikrofoni, jolla valot saa reagoimaan ääneen.</dd>
+                <dt>Teknologiat</dt><dd>Raspberry Pi, WLED, WS2812B, ESP32, Home Assistant -automaatiot</dd>
+                <dt>Tulos</dt><dd>Valaistus vaihtuu tilanteen mukaan automaattisesti ja se on hienosäädettävissä yhden ledin tarkkuudella.</dd>
               </dl>
             </div>
           </article>
@@ -142,10 +142,10 @@
             <div class="project__body">
               <h3>Poistuneen varaosan käänteissuunnittelu</h3>
               <dl class="project__facts">
-                <dt>Ongelma</dt><dd>Laadukkaan kodinkoneen sarana hajosi, eikä valmistaja enää toimita osaa.</dd>
-                <dt>Ratkaisu</dt><dd>Alkuperäinen osa mitattiin, mallinnettiin ja vahvistettiin murtumakohdasta. Materiaaliksi valittiin iskunkestävä PETG.</dd>
-                <dt>Teknologiat</dt><dd>Työntömittamittaus, Fusion 360, PETG-tulostus</dd>
-                <dt>Tulos</dt><dd>Kone palasi käyttöön alle viikossa. Uusi osa on kestänyt alkuperäistä pidempään.</dd>
+                <dt>Ongelma</dt><dd>Lastenrattaiden metallirungossa ollut ratas hajosi, valmistajalta osa maksaisi mansikoita.</dd>
+                <dt>Ratkaisu</dt><dd>Alkuperäinen osa mitattiin, mallinnettiin ja tulostettiin. Materiaaliksi valittiin säätä ja iskuja kestävä ASA.</dd>
+                <dt>Teknologiat</dt><dd>Työntömittamittaus, FreeCAD, ASA/ABS/PETG-tulostus</dd>
+                <dt>Tulos</dt><dd>Rattaat takaisin käyttöön alle viikossa. Uusi osa on kestänyt alkuperäistä pidempään.</dd>
               </dl>
             </div>
           </article>
@@ -153,12 +153,12 @@
           <article class="card project reveal">
             <div class="project__media project__media--photo"><img src="assets/portfolio/lautapeli-insertti.jpg" alt="3D-tulostettu organizer-insertti Nemesis-lautapelin laatikossa" loading="lazy"></div>
             <div class="project__body">
-              <h3>Lautapelien 3D-tulostetut organizerit</h3>
+              <h3>Lautapelien 3D-tulostetut insertit</h3>
               <dl class="project__facts">
                 <dt>Ongelma</dt><dd>Ison lautapelin sadat pikkuosat lojuvat laatikossa sekaisin, ja pelin pystytys venyy turhan pitkäksi.</dd>
-                <dt>Ratkaisu</dt><dd>Jokaiselle pelille suunnitellaan oma insertti, joka lajittelee kortit, nopat ja tokenit tiiviisti laatikkoon — sama osaaminen taipuu myös nopputorneihin ja muihin pelaajatarvikkeisiin.</dd>
+                <dt>Ratkaisu</dt><dd>Jokaiselle pelille suunnitellaan oma insertti, joka lajittelee kortit, nopat ja tokenit tiiviisti laatikkoon — sama osaaminen taipuu myös noppatorneihin ja muihin elämänlaatua parantaviin pelitarvikkeisiin.</dd>
                 <dt>Teknologiat</dt><dd>Parametrinen 3D-mallinnus, PETG/PLA-tulostus, moniväritulostus</dd>
-                <dt>Tulos</dt><dd>Toistuvia tilaustöitä kymmenille eri peleille — Tinkoderin tähän mennessä varmimmin toistuva tulonlähde.</dd>
+                <dt>Tulos</dt><dd>Toistuvia tilaustöitä kymmenille eri peleille — Tinkoderin tähän mennessä eniten tilattu tuote.</dd>
               </dl>
             </div>
           </article>
@@ -168,10 +168,10 @@
             <div class="project__body">
               <h3>Itse rakennettu pakkautuva kajakki</h3>
               <dl class="project__facts">
-                <dt>Ongelma</dt><dd>Valmiit pakkautuvat kajakit (packraftit) maksavat satoja euroja, ja moni malli vaatii ompelutaitoa, jota ei ollut valmiina.</dd>
+                <dt>Ongelma</dt><dd>Valmiit pakkautuvat kajakit (packraftit) aukkopeitteineen ja ISS-vetoketjuineen maksavat yli tuhat euroa.</dd>
                 <dt>Ratkaisu</dt><dd>Skeena-tyylinen packraft rakennettiin alusta asti itse, mukaan lukien irrotettava roiskesuoja, joka kiinnitetään ompelematta — kokonaan kuumasaumattu liitos ja vetoketju.</dd>
-                <dt>Teknologiat</dt><dd>Kuumasaumaus, PVC/TPU-kangas, käsityö</dd>
-                <dt>Tulos</dt><dd>Valmis kajakki myytiin voitolla — tekniikka on toistettavissa myös muihin retkeilyvarusteisiin.</dd>
+                <dt>Teknologiat</dt><dd>Kuumasaumaus, Nylon riptstop/TPU-kangas, käsityö</dd>
+                <dt>Tulos</dt><dd>Valmis kajakki myytiin voitolla — tekniikka on toistettavissa myös muihin retkeilyvarusteisiin (mm. kuivapusseihin).</dd>
               </dl>
             </div>
           </article>
