@@ -1,0 +1,26 @@
+# Deploys the tinkoder-site admin GUI. Meant to run ON the machine that
+# also holds the site's git working tree (see Dockerfile's note on why —
+# SITE_ROOT is derived from the app's own file location, so the whole
+# repo has to be mounted, not just this directory).
+#
+# Run from this directory: `docker compose up -d`.
+# Requires a `.env` file here (copy `.env.example`) with at least
+# ADMIN_TOKEN set.
+services:
+  admin:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "8088:8000"
+    volumes:
+      # Whole site repo, read-write — Save/Publish/Upload/Revert all edit
+      # and commit against this real working tree.
+      - ../..:/site
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
