@@ -31,11 +31,11 @@ PAGE_PAIRS: list[PagePair] = [
     PagePair("tietosuoja", "Tietosuoja / Privacy", "tietosuoja.html", "en/privacy.html"),
 ]
 
-_BY_SLUG = {p.slug: p for p in PAGE_PAIRS}
-
-
 def get_pair(slug: str) -> PagePair | None:
-    return _BY_SLUG.get(slug)
+    # Scans PAGE_PAIRS live (rather than a dict built once at import time)
+    # so tests can monkeypatch PAGE_PAIRS with a fixture registry and have
+    # get_pair() honor it immediately.
+    return next((p for p in PAGE_PAIRS if p.slug == slug), None)
 
 
 def fi_abs(pair: PagePair) -> Path:
