@@ -5,10 +5,15 @@
 #
 # Run from this directory: `docker compose up -d`.
 # Requires a `.env` file here (copy `.env.example`) with at least
-# ADMIN_TOKEN set.
+# ADMIN_TOKEN set, and APP_UID set to the numeric owner of this repo's
+# working tree on this host (`stat -c %u .` from the repo root) — the
+# container user must match it to have write/commit access to /site.
 services:
   admin:
-    build: .
+    build:
+      context: .
+      args:
+        APP_UID: ${APP_UID:-1000}
     restart: unless-stopped
     ports:
       - "8088:8000"
@@ -16,6 +21,12 @@ services:
       # Whole site repo, read-write — Save/Publish/Upload/Revert all edit
       # and commit against this real working tree.
       - ../..:/site
+      # GitHub deploy key (write access to this repo only), generated on
+      # the host — never baked into the image. Read-only mount; see
+      # Dockerfile for the known_hosts/ssh config that references this
+      # exact path. Must not exist inside this repo's own working tree
+      # (it isn't — see the sibling deploy-key/ next to tinkoder-site/).
+      - ../../../tinkoder-site-deploy-key/id_ed25519_deploy:/home/appuser/.ssh/deploy_key:ro
     env_file:
       - .env
     healthcheck:
