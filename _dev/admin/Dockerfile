@@ -28,7 +28,7 @@ RUN uv sync --frozen --no-install-project --no-dev
 FROM python:3.12-slim AS runtime
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends git \
+    && apt-get install -y --no-install-recommends git openssh-client \
     && rm -rf /var/lib/apt/lists/*
 
 # This UID must match the owner of the site repo on whatever host runs
