@@ -18,9 +18,16 @@ class GitError(RuntimeError):
     pass
 
 
-def _run(args: list[str], cwd: Path = SITE_ROOT) -> str:
+def _run(args: list[str], cwd: Path | None = None) -> str:
+    # `cwd` resolves against the *current* module-level SITE_ROOT at call
+    # time, not a default bound once at function-definition time -- a
+    # `cwd: Path = SITE_ROOT` default would freeze in whatever SITE_ROOT
+    # was when this module was first imported, silently ignoring any later
+    # reassignment (e.g. tests monkeypatching git_ops.SITE_ROOT to a
+    # sandbox repo would have no effect, and commands would keep running
+    # against the real site checkout).
     proc = subprocess.run(
-        ["git", *args], cwd=cwd, capture_output=True, text=True,
+        ["git", *args], cwd=cwd or SITE_ROOT, capture_output=True, text=True,
     )
     if proc.returncode != 0:
         raise GitError(f"git {' '.join(args)} failed: {proc.stderr.strip()}")
@@ -98,6 +105,18 @@ def status_porcelain() -> list[tuple[str, str]]:
         code, path = line[:2].strip(), line[3:]
         result.append((code, path))
     return result
+
+
+def dirty_files_under(subdir: Path) -> list[Path]:
+    """Absolute paths of every pending change (modified/staged/untracked)
+    whose relpath falls inside `subdir` -- used to sweep newly uploaded
+    media into a publish alongside the page files that reference them."""
+    rel_prefix = relpath(subdir)
+    out = []
+    for _code, path in status_porcelain():
+        if path == rel_prefix or path.startswith(rel_prefix + "/"):
+            out.append(SITE_ROOT / path)
+    return out
 
 
 def commit_and_push(paths: list[Path], message: str) -> str:
