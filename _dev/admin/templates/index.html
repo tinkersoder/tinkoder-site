@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Pages — Tinkoder admin</title>
+  <link rel="stylesheet" href="/static/admin.css">
+</head>
+<body>
+  {% include "_nav.html" %}
+  <main class="wrap">
+    <h1>Pages</h1>
+    {% if not token_configured %}
+      <div class="flash error">
+        ADMIN_TOKEN is not configured -- this instance is read-only until it's set.
+      </div>
+    {% endif %}
+    <table>
+      <thead>
+        <tr><th>Page</th><th>Finnish</th><th>English</th><th>FI/EN sync</th><th></th></tr>
+      </thead>
+      <tbody>
+        {% for row in rows %}
+        <tr>
+          <td><strong>{{ row.pair.title }}</strong><br><span class="mono">{{ row.pair.slug }}</span></td>
+          <td>{% if row.fi_dirty %}<span class="badge dirty">draft</span>{% else %}<span class="badge clean">clean</span>{% endif %}</td>
+          <td>{% if row.en_dirty %}<span class="badge dirty">draft</span>{% else %}<span class="badge clean">clean</span>{% endif %}</td>
+          <td>{% if row.sync_ok %}<span class="badge ok">in sync</span>{% else %}<span class="badge bad">out of sync</span>{% endif %}</td>
+          <td><a class="btn btn-ghost" href="/page/{{ row.pair.slug }}">Edit</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>

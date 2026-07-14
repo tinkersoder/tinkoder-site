@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Log in — Tinkoder admin</title>
+  <link rel="stylesheet" href="/static/admin.css">
+</head>
+<body>
+  {% include "_nav.html" %}
+  <main class="wrap" style="max-width:420px">
+    <h1>Log in</h1>
+    {% if not token_configured %}
+      <div class="flash error">
+        ADMIN_TOKEN is not set on the server. Set it in the environment and
+        restart the app before you can log in and make edits.
+      </div>
+    {% endif %}
+    {% if error %}
+      <div class="flash error">{{ error }}</div>
+    {% endif %}
+    <form method="post" action="/login">
+      <input type="hidden" name="next" value="{{ next }}">
+      <p>
+        <label for="token">Admin token</label>
+        <input type="text" id="token" name="token" autocomplete="off" autofocus>
+      </p>
+      <button type="submit" class="btn-save">Log in</button>
+    </form>
+    <p class="mono" style="opacity:0.7">
+      GET-only browsing (page lists, previews, history) works without logging in.
+      Saving, publishing, uploading media, and reverting all require this.
+    </p>
+  </main>
+</body>
+</html>

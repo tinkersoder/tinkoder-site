@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ pair.title }} — Tinkoder admin</title>
+  <link rel="stylesheet" href="/static/admin.css">
+</head>
+<body>
+  {% include "_nav.html" %}
+  <main class="wrap">
+    <p><a href="/">&larr; All pages</a></p>
+    <h1>{{ pair.title }}</h1>
+    <p class="mono">{{ pair.fi_path }} &nbsp;/&nbsp; {{ pair.en_path }}
+      {% if fi_dirty or en_dirty %}<span class="badge dirty">draft pending</span>{% else %}<span class="badge clean">clean</span>{% endif %}
+    </p>
+
+    {% if flash %}
+      <div class="flash {{ flash_kind }}">{{ flash }}</div>
+    {% endif %}
+
+    {% if not sync_ok %}
+      <div class="sync-issues">
+        <strong>FI/EN out of sync — publishing is blocked until this is fixed:</strong>
+        <ul>{% for issue in sync_issues %}<li>{{ issue }}</li>{% endfor %}</ul>
+      </div>
+    {% endif %}
+
+    {% if not authenticated %}
+      <div class="flash info">
+        Read-only mode. <a href="/login?next=/page/{{ pair.slug }}">Log in</a> to save, publish, upload media, or revert.
+      </div>
+    {% endif %}
+
+    <form id="save-form" method="post" action="/page/{{ pair.slug }}/save">
+      <h2>Content — Finnish / English</h2>
+      {% for fi_f, en_f in paired_fields %}
+        <div class="field-pair">
+          <div class="meta">
+            {% if fi_f %}&lt;{{ fi_f.tag }}{% if fi_f.attr %} {{ fi_f.attr }}{% endif %}&gt; · group “{{ fi_f.group }}”{% endif %}
+          </div>
+          <div class="columns">
+            <div>
+              <label class="mono">FI{% if fi_f %} #{{ fi_f.index }}{% endif %}</label>
+              {% if fi_f %}
+                <textarea name="fi_{{ fi_f.index }}" {% if not authenticated %}disabled{% endif %}>{{ fi_f.raw|safe }}</textarea>
+              {% else %}
+                <div class="flash error">missing on the Finnish side</div>
+              {% endif %}
+            </div>
+            <div>
+              <label class="mono">EN{% if en_f %} #{{ en_f.index }}{% endif %}</label>
+              {% if en_f %}
+                <textarea name="en_{{ en_f.index }}" {% if not authenticated %}disabled{% endif %}>{{ en_f.raw|safe }}</textarea>
+              {% else %}
+                <div class="flash error">missing on the English side</div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+      {% if authenticated %}
+        <button type="submit" class="btn-save">Save draft</button>
+        <span class="mono" style="opacity:0.7">Writes to disk only — does not commit or push.</span>
+      {% endif %}
+    </form>
+
+    {% if authenticated %}
+    <div class="publish-block">
+      <h2>Publish</h2>
+      <p class="warn">
+        This commits the Finnish and English files (and any newly uploaded media)
+        and <strong>pushes to origin</strong> — the live site rebuilds from this.
+        Blocked automatically while FI/EN are out of sync.
+      </p>
+      <form method="post" action="/page/{{ pair.slug }}/publish"
+            onsubmit="return confirm('Publish {{ pair.title }} to the live site now? This pushes to origin.');">
+        <button type="submit" class="btn-publish" {% if not sync_ok %}disabled{% endif %}>
+          Publish to live site
+        </button>
+      </form>
+    </div>
+
+    <div class="upload-widget">
+      <h2>Upload media</h2>
+      <p class="mono" style="opacity:0.7">
+        Resizes and converts to an optimized copy + WebP variant, saves into
+        <code>assets/uploads/</code>. Copy the returned path into a field above,
+        then Save draft.
+      </p>
+      <input type="file" id="upload-input" accept="image/jpeg,image/png,image/webp">
+      <div id="upload-result"></div>
+    </div>
+    <script>
+      document.getElementById('upload-input').addEventListener('change', async (e) => {
+        const file = e.target.files[0];
+        const resultEl = document.getElementById('upload-result');
+        if (!file) return;
+        resultEl.textContent = 'Uploading…';
+        const fd = new FormData();
+        fd.append('file', file);
+        try {
+          const resp = await fetch('/media/upload', { method: 'POST', body: fd });
+          const data = await resp.json();
+          if (!resp.ok) {
+            resultEl.textContent = 'Error: ' + (data.detail || resp.statusText);
+            return;
+          }
+          resultEl.innerHTML =
+            'Saved (' + data.width + '×' + data.height + '). Paths:' +
+            '<span class="path mono">' + data.primary + '</span>' +
+            '<span class="path mono">' + data.webp + '</span>';
+        } catch (err) {
+          resultEl.textContent = 'Upload failed: ' + err;
+        }
+      });
+    </script>
+    {% endif %}
+
+    <h2>Preview</h2>
+    <div class="columns">
+      <div>
+        <p class="mono">FI — /{{ pair.fi_path }}</p>
+        <iframe class="preview" src="/_site/{{ pair.fi_path }}"></iframe>
+      </div>
+      <div>
+        <p class="mono">EN — /{{ pair.en_path }}</p>
+        <iframe class="preview" src="/_site/{{ pair.en_path }}"></iframe>
+      </div>
+    </div>
+
+    <h2>Version history</h2>
+    <div class="columns">
+      <div>
+        <details class="history" open>
+          <summary>Finnish ({{ history_fi|length }})</summary>
+          {% for c in history_fi %}
+            <div class="history-row">
+              <span class="mono">{{ c.short }}</span>
+              <span>{{ c.date }}</span>
+              <span>{{ c.message }}</span>
+              {% if authenticated %}
+              <form method="post" action="/page/{{ pair.slug }}/revert" style="display:inline"
+                    onsubmit="return confirm('Revert Finnish file to {{ c.short }}? This does not publish.');">
+                <input type="hidden" name="lang" value="fi">
+                <input type="hidden" name="revision" value="{{ c.hexsha }}">
+                <button type="submit" class="btn-ghost">Revert</button>
+              </form>
+              {% endif %}
+            </div>
+          {% endfor %}
+          {% if authenticated and fi_dirty %}
+            <form method="post" action="/page/{{ pair.slug }}/discard" style="display:inline"
+                  onsubmit="return confirm('Discard uncommitted Finnish changes?');">
+              <input type="hidden" name="lang" value="fi">
+              <button type="submit" class="btn-danger">Discard uncommitted changes</button>
+            </form>
+          {% endif %}
+        </details>
+      </div>
+      <div>
+        <details class="history" open>
+          <summary>English ({{ history_en|length }})</summary>
+          {% for c in history_en %}
+            <div class="history-row">
+              <span class="mono">{{ c.short }}</span>
+              <span>{{ c.date }}</span>
+              <span>{{ c.message }}</span>
+              {% if authenticated %}
+              <form method="post" action="/page/{{ pair.slug }}/revert" style="display:inline"
+                    onsubmit="return confirm('Revert English file to {{ c.short }}? This does not publish.');">
+                <input type="hidden" name="lang" value="en">
+                <input type="hidden" name="revision" value="{{ c.hexsha }}">
+                <button type="submit" class="btn-ghost">Revert</button>
+              </form>
+              {% endif %}
+            </div>
+          {% endfor %}
+          {% if authenticated and en_dirty %}
+            <form method="post" action="/page/{{ pair.slug }}/discard" style="display:inline"
+                  onsubmit="return confirm('Discard uncommitted English changes?');">
+              <input type="hidden" name="lang" value="en">
+              <button type="submit" class="btn-danger">Discard uncommitted changes</button>
+            </form>
+          {% endif %}
+        </details>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

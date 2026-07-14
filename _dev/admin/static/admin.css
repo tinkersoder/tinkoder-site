@@ -1,0 +1,179 @@
+/* Tinkoder admin GUI — minimal styling, brand palette borrowed from the
+   live site (see /README.md and /CLAUDE.md at the repo root). This is a
+   local editing tool, not the public site, so it stays plain but should
+   still be pleasant to look at and use. */
+
+:root {
+  --birch: #F6F7F4;
+  --spruce: #1B5E4A;
+  --amber: #E9A13B;
+  --ink: #182420;
+  --night: #0F1513;
+  --border: #d8ddd4;
+  --danger: #b3382c;
+  --danger-bg: #fbe9e7;
+  --success: #1B5E4A;
+  --success-bg: #e7f1ec;
+  --radius: 8px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --birch: #14201b;
+    --ink: #eef1ec;
+    --border: #2a352f;
+    --danger-bg: #3a1f1c;
+    --success-bg: #16281f;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  background: var(--birch);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+header.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.5rem;
+  background: var(--night);
+  color: var(--birch);
+}
+
+header.topbar a { color: var(--birch); text-decoration: none; }
+header.topbar .brand { font-weight: 700; letter-spacing: 0.02em; }
+header.topbar .brand span { color: var(--amber); }
+header.topbar nav { display: flex; gap: 1rem; align-items: center; font-size: 0.9rem; }
+
+main.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+h1, h2, h3 { font-family: "Bricolage Grotesque", inherit; }
+
+.mono { font-family: "Spline Sans Mono", ui-monospace, monospace; font-size: 0.85em; }
+
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 0.6rem 0.5rem; border-bottom: 1px solid var(--border); }
+
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.badge.dirty { background: var(--danger-bg); color: var(--danger); }
+.badge.clean { background: var(--success-bg); color: var(--success); }
+.badge.ok { background: var(--success-bg); color: var(--success); }
+.badge.bad { background: var(--danger-bg); color: var(--danger); }
+
+.flash {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+.flash.success { background: var(--success-bg); color: var(--success); }
+.flash.error { background: var(--danger-bg); color: var(--danger); }
+.flash.info { background: #eef2ee; color: var(--ink); }
+
+.sync-issues {
+  background: var(--danger-bg);
+  color: var(--danger);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+.sync-issues ul { margin: 0.4rem 0 0; padding-left: 1.2rem; }
+
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+@media (max-width: 900px) {
+  .columns { grid-template-columns: 1fr; }
+}
+
+.field-pair {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.75rem;
+  margin-bottom: 0.9rem;
+  background: rgba(255,255,255,0.4);
+}
+@media (prefers-color-scheme: dark) {
+  .field-pair { background: rgba(255,255,255,0.03); }
+}
+
+.field-pair .meta {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  margin-bottom: 0.3rem;
+}
+
+textarea, input[type=text], input[type=file] {
+  width: 100%;
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--birch);
+  color: var(--ink);
+}
+textarea { min-height: 4.5rem; resize: vertical; }
+
+button, .btn {
+  display: inline-block;
+  padding: 0.55rem 1.1rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+.btn-save { background: var(--ink); color: var(--birch); }
+.btn-publish {
+  background: var(--amber);
+  color: var(--night);
+  border: 2px solid var(--night);
+}
+.btn-publish:hover { filter: brightness(1.05); }
+.btn-danger { background: var(--danger-bg); color: var(--danger); border: 1px solid var(--danger); }
+.btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--border); }
+
+.publish-block {
+  border: 2px dashed var(--amber);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin: 1.5rem 0;
+}
+.publish-block p.warn { font-size: 0.85rem; opacity: 0.85; }
+
+iframe.preview {
+  width: 100%;
+  height: 70vh;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: white;
+}
+
+details.history { margin-top: 0.5rem; }
+details.history summary { cursor: pointer; font-weight: 600; }
+.history-row { display: flex; gap: 0.6rem; align-items: center; padding: 0.3rem 0; font-size: 0.85rem; }
+
+.upload-widget { border: 1px dashed var(--border); border-radius: var(--radius); padding: 1rem; margin: 1rem 0; }
+#upload-result { font-size: 0.85rem; margin-top: 0.5rem; }
+#upload-result .path { display: block; user-select: all; }

@@ -1,0 +1,13 @@
+<header class="topbar">
+  <a class="brand" href="/">Tinkoder <span>admin</span></a>
+  <nav>
+    {% if authenticated %}
+      <span class="mono">logged in</span>
+      <form method="post" action="/logout" style="display:inline">
+        <button type="submit" class="btn-ghost">Log out</button>
+      </form>
+    {% else %}
+      <a href="/login">Log in to edit</a>
+    {% endif %}
+  </nav>
+</header>
